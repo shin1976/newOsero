@@ -8,9 +8,9 @@
   var timeoutID2;
 
   //縦のマスの数
-  var vertical = 12;
+  var vertical = 20;
   //横のマスの数
-  var horizontal = 12;
+  var horizontal = 20;
   //真ん中の場所の2つの数字を用意
   var central_vertical = Math.round(vertical / 2);
   var central_horizontal = Math.round(horizontal / 2);
