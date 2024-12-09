@@ -8,9 +8,9 @@
   var timeoutID2;
 
   //縦のマスの数
-  var vertical = 8;
+  var vertical = 15;
   //横のマスの数
-  var horizontal = 8;
+  var horizontal = 15;
   //真ん中の場所の2つの数字を用意
   var central_vertical = Math.round(vertical / 2);
   var central_horizontal = Math.round(horizontal / 2);
@@ -39,8 +39,8 @@
     var max_evalue = 500;
     //左上の済、最大の評価値
     for (var i = 0; i < vertical; i++) {
-      var max_evalue = 500;
-      var data = [];
+      // var max_evalue = 500;
+      // var data = [];
       for (var j = 0; j < horizontal; j++) {
         data.push(max_evalue);
         max_evalue *= -0.8;
