@@ -1,89 +1,85 @@
 <!DOCTYPE html>
 <html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>osero</title>
     <style>
-        #board {
-            background-color: #555555;
+      #board {
+        background-color: #555555;
+      }
 
-        }
+      td.cell {
+        /* background-color: #FFB27F; */
+        background-color: #7aff87;
+        width: 90px;
+        height: 90px;
+        margin: 3px;
+        font-size: 70px;
+        text-align: center;
+        user-select: none;
+        /* CSS3 */
+        -moz-user-select: none;
+        /* Firefox */
+        -webkit-user-select: none;
+        /* Safari、Chromeなど */
+        -ms-user-select: none;
+        /* IE10かららしい */
+      }
+      td.cell_white {
+        background-color: white;
+      }
 
-        td.cell {
-            /* background-color: #FFB27F; */
-            background-color: #7aff87;
-            width: 90px;
-            height: 90px;
-            margin: 3px;
-            font-size: 70px;
-            text-align: center;
-            user-select: none;
-            /* CSS3 */
-            -moz-user-select: none;
-            /* Firefox */
-            -webkit-user-select: none;
-            /* Safari、Chromeなど */
-            -ms-user-select: none;
-            /* IE10かららしい */
+      td.black {
+        color: black;
+      }
 
+      td.white {
+        color: white;
+      }
 
-        }
+      .container {
+        text-align: center;
+      }
 
-        td.black {
-            color: black;
-        }
+      .formHideClass {
+        display: none;
+      }
 
-        td.white {
-            color: white;
-        }
+      .btn-gradation {
+        display: inline-block;
+        width: 180px;
+        text-align: center;
+        font-size: 16px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 12px 24px;
+        border-radius: 4px;
+        background-image: linear-gradient(-90deg, #ff006e, #ffd500);
+        transition: 0.5s;
+        background-size: 200%;
+      }
 
-        .container {
-            text-align: center;
-        }
-
-        .formHideClass {
-            display: none;
-        }
-
-
-
-        .btn-gradation {
-            display: inline-block;
-            width: 180px;
-            text-align: center;
-            font-size: 16px;
-            color: #FFF;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 12px 24px;
-            border-radius: 4px;
-            background-image: linear-gradient(-90deg, #FF006E, #FFD500);
-            transition: .5s;
-            background-size: 200%;
-        }
-
-        .btn-gradation:hover {
-            background-position: right center;
-        }
+      .btn-gradation:hover {
+        background-position: right center;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <h2>
-            黒（あなた）：<span id="numBlack"></span>枚
-            白（PC）：<span id="numWhite"></span>枚
-        </h2>
-        <div class="boards">
-            <table id="board" alilgn="center"></table>
-            <h2 id="message"></h2>
-
-
-        </div>
+      <h2>
+        黒（あなた）：<span id="numBlack"></span>枚 白（PC）：<span
+          id="numWhite"
+        ></span
+        >枚
+      </h2>
+      <div class="boards">
+        <table id="board" align="center"></table>
+        <h2 id="message"></h2>
+      </div>
     </div>
-    <script src="./js/main.js"></script>
-</body>
-
+    <script src="./js/main_1215.js"></script>
+  </body>
 </html>

@@ -3,33 +3,18 @@
   var data = [];
   var BLACK = 1;
   var WHITE = 2;
+  var RED = 3;
   var myTurn = false;
   var timeoutID;
   var timeoutID2;
 
   //縦のマスの数
-  var vertical = 15;
+  var vertical = 8;
   //横のマスの数
-  var horizontal = 15;
+  var horizontal = 8;
   //真ん中の場所の2つの数字を用意
   var central_vertical = Math.round(vertical / 2);
   var central_horizontal = Math.round(horizontal / 2);
-
-  //ここだけ変更すれば大丈夫
-  // var WeightData = [
-  //   [50, 50, 45, -11, 4, -1, -1, 4, -11, 45, 50, 50],
-  //   [50, 50, -11, -16, -1, -3, -3, 2, -16, -11, 50, 50],
-  //   [50, 50, 4, -1, 2, -1, -1, 2, -1, 4, 50, 50],
-  //   [50, 50, -1, -3, -1, 0, 0, -1, -3, -1, 50, 50],
-  //   [50, 50, -1, -3, -1, 0, 0, -1, -3, -1, 50, 50],
-  //   [50, 50, 4, -1, 2, -1, -1, 2, -1, 4, 50, 50],
-  //   [50, 50, -11, -16, -1, -3, -3, -1, -16, -11, 50, 50],
-  //   [50, 50, 30, -11, 4, -1, -1, 4, -11, 45, 50, 50],
-  //   [50, 50, 30, -11, 4, -1, -1, 4, -11, 45, 50, 50],
-  //   [50, 50, 30, -11, 4, -1, -1, 4, -11, 45, 50, 50],
-  //   [50, 50, 30, -11, 4, -1, -1, 4, -11, 45, 50, 50],
-  //   [50, 50, 30, -11, 4, -1, -1, 4, -11, 45, 50, 50],
-  // ];
 
   //評価基準を自動生成する関数
   function make_evalue() {
@@ -70,7 +55,16 @@
       // data[i] = [0, 0, 0, 0, 0, 0, 0, 0];
       for (var j = 0; j < horizontal; j++) {
         var td = document.createElement("td");
-        td.className = "cell";
+        if ((i < 3 && j < 3) || (i < 3 && j > 4)) {
+          data[i][j] = RED;
+          td.className = "cell cell_white";
+        } else if ((i > 4 && j < 3) || (i > 4 && j > 4)) {
+          td.className = "cell cell_white";
+          data[i][j] = RED;
+        } else {
+          td.className = "cell";
+        }
+
         td.id = "cell" + i + "_" + j;
         // 属性を追加
         td.setAttribute("ve", i);
@@ -79,6 +73,7 @@
         tr.appendChild(td);
       }
       b.appendChild(tr);
+      console.log(data);
     }
     put(central_vertical, central_horizontal, BLACK);
     put(central_vertical - 1, central_horizontal - 1, BLACK);
@@ -226,6 +221,7 @@
       put(px, py, WHITE);
     }
     update();
+    console.log(data);
   }
 
   //駒テーブルデータをコピー
@@ -257,7 +253,7 @@
   //canFlipの中で使う関数、ある場所に置いたときに、全ての方向に対してgetFlipCellsOneDirを行う
   function getFlipCells(i, j, color) {
     //これから調べるマス目に既に黒又は白の駒が置いてあればリターン
-    if (data[i][j] == BLACK || data[i][j] == WHITE) {
+    if (data[i][j] == BLACK || data[i][j] == WHITE || data[i][j] == RED) {
       return [];
     }
     //挟める駒があるか、左上、上、右上、左、右、左下、下、右下と順番に調べる
@@ -293,6 +289,7 @@
       x >= vertical ||
       y >= horizontal ||
       data[x][y] == color ||
+      data[x][y] == RED ||
       data[x][y] == 0
     ) {
       return [];
